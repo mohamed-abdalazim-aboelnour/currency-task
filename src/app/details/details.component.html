@@ -1,0 +1,36 @@
+<div class="details">
+  <h2>{{fromCurrency}} to {{toCurrency}} Details</h2>
+  <app-converter [fromCurrency]="fromCurrency" [toCurrency]="toCurrency" />
+  
+  <div class="historical-data">
+    <h3>Historical Data</h3>
+    <div class="historical-data__grid">
+      <div class="historical-data__item">
+        <p class="historical-data__label">Last Year</p>
+        <p class="historical-data__value">{{historicalData.lastYear}}</p>
+      </div>
+      <div class="historical-data__item">
+        <p class="historical-data__label">Last Month</p>
+        <p class="historical-data__value">{{historicalData.lastMonth}}</p>
+      </div>
+      <div class="historical-data__item">
+        <p class="historical-data__label">Yesterday</p>
+        <p class="historical-data__value">{{historicalData.yesterday}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popular-conversions">
+    <h3>Popular Conversions</h3>
+    <div class="popular-conversions__grid">
+      <div *ngFor="let conversion of popularConversions" class="popular-conversions__item">
+        <p class="popular-conversions__label">1 {{fromCurrency}} to {{conversion.currency}}</p>
+        <p class="popular-conversions__value">{{conversion.rate}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="back-button">
+    <button routerLink="/" class="btn btn--secondary">Back to Home</button>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="converter">
+  <h2>Currency Converter</h2>
+  <div class="converter__grid">
+    <div class="converter__input">
+      <label for="amount">Amount</label>
+      <input id="amount" type="number" [(ngModel)]="amount" placeholder="Enter amount" (input)="enableInputs()">
+    </div>
+    <div class="converter__group">
+      <div class="converter__input">
+        <label for="fromCurrency">From</label>
+        <select id="fromCurrency" [(ngModel)]="fromCurrency" [disabled]="!amount" (change)="onCurrencyChange()">
+          <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+        </select>
+      </div>
+      <div class="converter__input">
+        <label for="toCurrency">To</label>
+        <select id="toCurrency" [(ngModel)]="toCurrency" [disabled]="!amount" (change)="onCurrencyChange()">
+          <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="converter__button__group">
+    <button (click)="convert()" [disabled]="!amount" class="btn btn--secondary">Convert</button>
+    <button (click)="swapCurrencies()" [disabled]="!amount" class="btn btn--secondary">Swap</button>
+  </div>
+  <div *ngIf="result" class="converter__result">
+    {{amount}} {{fromCurrency}} = {{result}} {{toCurrency}}
+  </div>
+  <button [routerLink]="['/details', fromCurrency, toCurrency]" [disabled]="!amount" class="btn btn--secondary">View Details</button>
+</div>
+<div *ngIf="quickConversions.length > 0" class="quick-conversions">
+  <h3>Quick Conversions ({{fromCurrency}} to {{toCurrency}})</h3>
+  <div class="quick-conversions__grid">
+    <div *ngFor="let conversion of quickConversions" class="quick-conversions__item">
+      {{conversion.amount}} {{fromCurrency}} = {{conversion.result}} {{toCurrency}}
+    </div>
+  </div>
+</div>
+<div *ngIf="reverseConversions.length > 0" class="reverse-conversions">
+  <h3>Reverse Conversions ({{toCurrency}} to {{fromCurrency}})</h3>
+  <div class="reverse-conversions__grid">
+    <div *ngFor="let conversion of reverseConversions" class="reverse-conversions__item">
+      {{conversion.amount}} {{toCurrency}} = {{conversion.result}} {{fromCurrency}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+$breakpoint-mobile: 480px;
+
+.header {
+  background-color: #3f51b5;
+  color: white;
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 20px;
+    }
+  }
+  &__menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    @media (max-width: $breakpoint-mobile) {
+      display: block;
+    }
+  }
+  &__menu-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      position: absolute;
+    }
+    &::before {
+      top: -6px;
+    }
+    &::after {
+      bottom: -6px;
+    }
+  }
+  &__nav {
+    display: flex;
+    gap: 16px;
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #3f51b5;
+      padding: 16px;
+      &--open {
+        display: flex;
+      }
+    }
+  }
+
+  &__link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

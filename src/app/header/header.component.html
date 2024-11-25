@@ -1,0 +1,14 @@
+<header class="header">
+  <div class="header__container">
+    <h1 class="header__title">Currency Exchanger</h1>
+    <button class="header__menu-toggle" (click)="toggleMenu()">
+      <span class="sr-only">Toggle menu</span>
+      <span class="header__menu-icon"></span>
+    </button>
+    <nav class="header__nav" [class.header__nav--open]="isMenuOpen">
+      <a routerLink="/" class="header__link">Home</a>
+      <a routerLink="/details/USD" class="header__link">USD</a>
+      <a routerLink="/details/EUR" class="header__link">EUR</a>
+    </nav>
+  </div>
+</header>
